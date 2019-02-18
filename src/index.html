@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./css/style.css" >
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" >
+    <link rel="stylesheet" href="../node_modules/c3/c3.css">
+    <style>
+    </style>
+  </head>
+  <body>
+    <!-- <h1>Serial</h1>
+    <!-- All of the Node.js APIs are available in this renderer process.
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    Electron <script>document.write(process.versions.electron)</script>,
+    and Serialport <script>document.write(require('serialport/package').version)</script>.
+
+    <div id="error"></div>
+    <div id="ports"></div>
+
+    <button id="run">Run</button>
+    <button id="stop">Stop</button> -->
+    <div class="jumbotron jumbotron-fluid">
+      <h1 class="display-6">BMS RTC <a id="command_btn" class="btn btn-secondary" href="#" role="button">Run</a></h1>
+      <hr class="my-1">
+      <p>Status: <span id="info"></span></p>
+      <p>Port: <span id="port"></span></p>
+    </div>
+
+    <div class="container">
+
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="monitor-tab nav-link active" href="#">Real Time</a>
+        </li>
+        <li class="nav-item">
+          <a class="log-tab nav-link" href="#">Log</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Setting</a>
+        </li>
+      </ul>
+
+      <div class="monitor-area">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="td-center">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cell 1</th>
+                <th scope="col">Cell 2</th>
+                <th scope="col">Cell 3</th>
+                <th scope="col">Cell 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="volt_cell">
+                <th scope="row"><i class="fas fa-bolt"></i> Voltage</th>
+                <td>0V</td>
+                <td>0V</td>
+                <td>0V</td>
+                <td>0V</td>
+              </tr>
+              <tr id="temp_cell">
+                <th scope="row"><i class="fas fa-temperature-low"></i> Temperature</th>
+                <td>0°C</td>
+                <td>0°C</td>
+                <td>0°C</td>
+                <td>0°C</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="list-group" id="state">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <b>충방전상태</b> <span class="badge badge-secondary">waiting</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <b>전압입력상태</b> <span class="badge badge-secondary">waiting</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <b>BMS상태</b> <span class="badge badge-secondary">waiting</span>
+            </li>
+          </ul>
+      </div>
+
+      <div class="log-area">
+        <div class="table-responsive">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <div style="width:100%; text-align: center"><i class="fas fa-bolt"></i> Voltage</div>
+                <div id="chart_voltage" class="ct-chart voltage" ></div>
+              </li>
+              <li class="list-group-item">
+                <div style="width:100%; text-align: center"><i class="fas fa-temperature-low"></i> Temperature</div>
+                <div id="chart_temperature" class="ct-chart temperature"></div>
+              </li>
+            </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+    require('./renderer.js');
+  </script>
+</html>
