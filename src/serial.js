@@ -40,7 +40,7 @@ function openPort() {
         const headers = Object.keys(ports[0])
         ports.forEach(port => {
             console.log(port)
-            if (port.comName.indexOf('usbserial') >= 0) {
+            if (confirm('Connect [' + port.comName + '] Serial port ?')) {
                 usbSerial.port = openSerial(port.comName);
             }
         });
